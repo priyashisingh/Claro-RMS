@@ -778,7 +778,7 @@ $('#datatables tbody').on( 'click', 'td', function () {
     var index = $(this).closest('tr').index();
    var data = table.row( $(this).parents('tr') ).data();
   console.log(data.customer_id);
-   window.location.href = "file:///E:/Claro/RMS%20v2.0/Data%20of%20an%20Device/rmspage.html?id="+data.vfd_sno;
+   window.location.href = "file:///C:/Users/samsung/Desktop/claro/RMS%20v2.0/Data%20of%20an%20Device/rmspage.html?id="+data.vfd_sno;
   
   
 });
