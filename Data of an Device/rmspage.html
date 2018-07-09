@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link href="https://fonts.googleapis.com/css?family=Coustard" rel="stylesheet">
+
+ 
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+ <script src="js/rmspage.js"></script>
+  <link rel="stylesheet" href="css/rms2_11_22.css">
+
+  </head>
+  <body> 
+  
+  
+  <nav class="navbar navbar-default" id="my_navbar">
+   <div class="container-fluid">
+    <div class="navbar-brand" ><img class="logoc" src="IMAGES2/logo.png" ></div>
+	
+	 <ul class="nav navbar-nav">
+	<li><p id="admin_name">claro admin</p></li>
+  <li>
+  <img class="csv" src="IMAGES2/CSV.png" data-toggle="modal" data-target="#myModal" >
+  </li>
+  <li><p class="l1">|</p></li>
+  <li>
+  <img class="logout" id="logoutbtn" src="IMAGES2/Logout.png" >
+  </li>
+  </ul>
+  </div>
+  </nav>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog" >
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" >
+        <div class="modal-header" style="background-color:#ffbf00;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title" style="font-family:arial-black;font-size:7.0vh; text-align:center; ">csv</h2>
+        </div>
+        <div class="modal-body">
+		 <div class="dateform"><label>Start Date</label>
+		 <input type="text" class="form-control" placeholder="DD-MM-YYYY" id="startdate" value="12-11-2017">
+		 <label style="margin-left:30px;">End Date</label><input  type="text" class="form-control" id="enddate"  placeholder="DD-MM-YYYY" value="18-01-2018"></div>
+		   
+		   
+		   <label id="sc" style="margin-top:40px; margin-left:10px; ">Saved Configuration: </label>
+		   <button type="button" class="btn"  id="mpbtn"  style="margin-left:20px; font-size:15px; font-family:arial-black;" >MP</button>
+		    <button type="button" class="btn" id="mhbtn" style="margin-left:20px; font-size:15px;font-family:arial-black;">MH</button>
+			
+			<button type="button" class="btn" id="clear" style="margin-left:20px; ">Clear</button>
+		   
+		   <table class="table" id="rowclick2 " style="margin-top:10px;">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Unit</th>
+        <th>Column Name(Default)</th>
+		<th>Description</th>
+      </tr>
+    </thead>
+	
+    <tbody>
+	<tr>
+        <td>
+		<div class="form-check">
+           <input type="checkbox" id="check_farmer_name" value="Farmer Name">
+           <label class="form-check-label"  for="check_farmer_name">Farmer Name</label>
+         </div>
+         </td>
+        <td>-</td>
+        <td><input type="text" class="form-control" id="check_farmer_name_t"  value="Farmer Name"></td>
+		<td>Name of the farmer</td>
+      </tr> 
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+           <input type="checkbox" id="check_customer_id" value="Customer Id">
+           <label class="form-check-label"  for="check_customer_id">Customer Id</label>
+         </div>
+         </td>
+        <td>-</td>
+        <td><input type="text" class="form-control" id="check_customer_id_t"  value="Customer_id"></td>
+		<td>An ID to identify Customer</td>
+      </tr> 
+	  
+	   <tr>
+        <td>
+		<div class="form-check">
+           <input type="checkbox" name="cl"  id="check_consumer_no" value="Consumer Number">
+           <label class="form-check-label"  for="check_consumer_no">Consumer Number</label>
+         </div>
+         </td>
+        <td>-</td>
+        <td><input type="text" class="form-control" id="check_consumer_no_t"  value="Consumer_no."></td>
+		<td>An ID to identify Consumer ( For MH )</td>
+      </tr> 		 
+	  
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+           <input type="checkbox" class="mp" id="check_vfd_no" value="VFD Serial No">
+           <label class="form-check-label"  for="check_vfd_no">VFD Serial No.</label>
+         </div>
+         </td>
+        <td>-</td>
+        <td><input type="text" class="form-control" id="check_vfd_no_t"  value="VFD_serial_no"></td>
+		<td>Serial number of the VFD</td>
+      </tr>
+                  
+	  	  <tr>
+        <td>
+		<div class="form-check">
+           <input type="checkbox" class="mp" id="check_vfd_hp" value="VFD Horsepower">
+           <label class="form-check-label"  for="check_vfd_hp">VFD Horsepower</label>
+         </div>
+         </td>
+        <td>HP</td>
+        <td><input type="text" class="form-control" id="check_vfd_hp_t"  value="VFD_horsepower"></td>
+		<td>Horsepower of the VFD</td>
+      </tr> 
+	  
+      <tr>
+        <td>
+		<div class="form-check">
+          <input class="mp" type="checkbox" name="cl" id="check_serial_no" value="Data Serial Number">
+          <label class="form-check-label" for="check_serial_no">Data Serial Number</label>
+         </div>
+         </td>
+        <td>-</td>
+        <td><input type="text" class="form-control" id="check_serial_no_t" value="Sr.No."></td>
+		<td>Serial number of the data sequence</td>
+      </tr>
+	  
+      <tr>
+        <td>
+		<div class="form-check">
+          <input class="mp" type="checkbox" name="cl" class="mpch" id="check_date" value="Date">
+          <label class="form-check-label" for="check_date">Date</label>
+         </div>
+         </td>
+        <td>DD-MM-YYYY</td>
+        <td><input type="text" class="form-control" id="check_date_t" value="Reading Date"></td>
+		<td>Time of data creation</td>
+      </tr>
+	  
+      <tr>
+        <td>
+		<div class="form-check">
+          <input class="mp" type="checkbox"  name="cl" id="check_time" value="Time">
+          <label class="form-check-label" for="check_time">Time</label>
+         </div>
+         </td>
+        <td>HH.MM</td>
+        <td><input type="text" class="form-control" id="check_time_t" value="Reading Time"></td>
+		<td>Time of data creation</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input class="mp" type="checkbox" name="cl" id="check_voltage" value="Voltage">
+          <label class="form-check-label" for="check_voltage">Voltage</label>
+         </div>
+         </td>
+        <td>V</td>
+        <td><input type="text" class="form-control" id="check_voltage_t" value="Voltage (V)"></td>
+		<td>Voltage at that Instant</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input class="mp" type="checkbox" name="cl" id="check_current" value="Current">
+          <label class="form-check-label" for="check_current">Current</label>
+         </div>
+         </td>
+        <td>A</td>
+        <td><input type="text" class="form-control" id="check_current_t" value="Current (A)"></td>
+		<td>Current at that Instant</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input class="mp"  class="form-check-input" type="checkbox" id="check_frequency" value="Frequency">
+          <label class="form-check-label" for="check_frequency">Frequency</label>
+         </div>
+         </td>
+        <td>HZ</td>
+        <td><input type="text" class="form-control" id="check_frequency_t" value="Frequency (HZ)"></td>
+		<td>Frequency of pump at that Instant</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input  class="form-check-input" type="checkbox" id="check_discharge_rate" value="Frequency">
+          <label class="form-check-label" for="check_discharge_rate">Discharge Rate</label>
+         </div>
+         </td>
+        <td>M/H</td>
+        <td><input type="text" class="form-control" id="check_discharge_rate_t" value="Discharge Rate"></td>
+		<td>Discharge Rate at that instant</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input type="checkbox" name="cl" id="check_motor_speed" value="Motor Speed">
+          <label class="form-check-label" for="check_motor_speed">Motor Speed</label>
+         </div>
+         </td>
+        <td>RPM</td>
+        <td><input type="text" class="form-control" id="check_motor_speed_t" value="Motor RPM (RPM)"></td>
+		<td>RPM of motor at that Instant</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input class="form-check-input" type="checkbox" name="cl" id="check_power" value="Power">
+          <label class="form-check-label" for="check_power">Power</label>
+         </div>
+         </td>
+        <td>W</td>
+        <td><input type="text" class="form-control" id="check_power_t" value="Power (W)"></td>
+		<td>Power Generated at that Instant</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input  class="mp"  class="form-check-input" type="checkbox" name="cl" id="check_water_discharge" value="Water Discharge">
+          <label class="form-check-label" for="check_water_discharge">Water Discharge</label>
+         </div>
+         </td>
+        <td>Meter Cube</td>
+        <td><input type="text" class="form-control" id="check_water_discharge_t" value="Today Discharge (meter cube)"></td>
+		<td>Water Discharged at that Instant</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input type="checkbox" name="cl" id="check_total_water_discharge" value="Total Water Discharged">
+          <label class="form-check-label" for="check_total_water_discharge">Total Water Discharged</label>
+         </div>
+         </td>
+        <td>Meter Cube</td>
+        <td><input type="text" class="form-control" id="check_total_water_discharge_t" value="Total Discharge (meter cube)"></td>
+		<td>Total Water Discharged since the starting of Pump on that day</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input class="mp" type="checkbox" name="cl" id="check_energy" value="Energy">
+          <label class="form-check-label" for="check_energy">Energy</label>
+         </div>
+         </td>
+        <td>kWh</td>
+        <td><input type="text" class="form-control" id="check_energy_t" value="Today Energy (kWh)"></td>
+		<td>Energy Produced at that instant</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input type="checkbox" name="cl" id="check_total_energy" value="Total Energy">
+          <label class="form-check-label" for="check_total_energy">Total Energy</label>
+         </div>
+         </td>
+        <td>kWh</td>
+        <td><input type="text" class="form-control" id="check_total_energy_t" value="Total Energy (kWh)"></td>
+		<td>Total Energy produced since the starting of Pump on that day</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input type="checkbox" name="cl" id="check_on_time" value="On Time">
+          <label class="form-check-label" for="check_on_time">On Time</label>
+         </div>
+         </td>
+        <td>HH.MM</td>
+        <td><input type="text" class="form-control" id="check_on_time_t" value="On Time(HH.MM)"></td>
+		<td>Time of starting of the pump</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input type="checkbox" name="cl" id="check_off_time" value="Off Time">
+          <label class="form-check-label" for="check_off_time">Off Time</label>
+         </div>
+         </td>
+        <td>HH.MM</td>
+        <td><input type="text" class="form-control" id="check_off_time_t" value="Off Time(HH.MM)"></td>
+		<td>Time of turning off the pump</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input class="mp" type="checkbox" name="cl" id="check_status" value="Status">
+          <label class="form-check-label" for="check_status">Status</label>
+         </div>
+         </td>
+        <td>(ON/OFF)</td>
+        <td><input type="text" class="form-control" id="check_status_t" value="Status"></td>
+		<td>Status of pump at that instant</td>
+      </tr>
+	  
+	  <tr>
+        <td>
+		<div class="form-check">
+          <input type="checkbox" id="check_flag" value="Quarter Flag">
+          <label class="form-check-label" for="check_flag">Quarter Flag</label>
+         </div>
+         </td>
+        <td>(Y/N)</td>
+        <td><input type="text" class="form-control" id="check_flag_t" value="Quarter Flag"></td>
+		<td>Marks 3 months completion from the date of installation</td>
+      </tr>
+	  
+    </tbody>
+  </table>
+		
+<button type="button" class="btn center-block" id="downloadbtn" onclick="printChecked();">Download CSV</button>
+		
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+
+<div class="container" align="center">
+<div class="row">
+<div class="col-sm-12 offset-md-12">
+ <div id = "isonline" class="box" >
+  <label id="day">Today</label><br>
+ <p class="boxtext" style="font-size: 12px;display:inline">System status:</p>&nbsp;<p id="system_status" style="font-size:12px;display:inline;font-family:Arial Black;">Online</p><br>
+  <p id="online_e" style="font-size: 12px;font-family:Arial Black;display:inline">4.75 kWh</p>&nbsp;<p class="boxtext" id="generated" style="font-size: 12px;display:inline">generated</p><br>
+<p class="boxtext" id="since1" style="font-size:12px;display:inline">Since</p>&nbsp;<p id="online_on" style="font-size: 12px;font-family:Arial Black;display:inline">09:45 AM</p><br>
+<p class="boxtext" id="lastdate1" style="font-size:12px;display:inline">Last data:</p>&nbsp;<p id="online_at" style="font-size:12px;display:inline">14:30:00</p>
+</div>
+ <div class="box" id="isoffline" style="display:none">
+  <label id="day">Today</label><br>
+ <p class="boxtext" style="font-size: 12px;">System status:</p>&nbsp;<p id="system_status" style="font-size:12px;font-family:Arial Black;">Offline</p><br>
+  <p class="boxtext" id="generated" style="font-size: 12px;">Last data was received</p><br>
+<p class="boxtext" id="since1" style="font-size:12px;">on </p>&nbsp;<p id="offline_on" style="font-size: 12px;font-family:Arial Black;display:inline ">09:45 AM</p>
+<br><p class="boxtext" id="lastdate1" style="font-size:12px;">at</p>&nbsp;<p id="offline_at" style="font-size:12px;font-family:Arial Black;display:inline">14:30:00</p>
+</div>
+</div></div>
+</div>  
+<div class="row">
+<div class="col-sm-12">
+<div id="weew"> <img id="weatherimg" src="IMAGES2/cloud.png" style="opacity: 0.0;">
+<p id="degree"><sup></sup></p>
+	<p id="weather"></p>
+</div>
+
+
+</div>
+</div>
+
+
+<div class="container" style="display:flex;">
+<div id="colr" class="tab-content">
+<div id="energy_chart"  class="tab-pane fade in active"></div>
+		</div>
+		</div>
+
+		
+		<!-- Modal in energy_generation-->
+  <div class="modal fade" id="Modal_e_1" role="dialog">
+    <div class="modal-dialog" >
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#ffbf00;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 id="chart_date_id" class="modal-title" align="center" style="font-size:22px;"></h4>
+        </div>
+        <div class="modal-body">		
+		 <div id="voltage_current_chart"  style="margin:20px;"></div>		 		 
+		  <div id="flow_flowrate_chart" style="margin:20px;"></div>	 
+		  <div id="power_energy_chart" style="margin:20px;"></div>	 
+        </div>
+        <div class="modal-footer" >
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color:#ffbf00;">Close</button>
+        </div>
+		</div>
+      </div>
+      </div>
+
+  
+
+
+<hr>
+
+<div class="container" style="width:100%;">
+<div class="row">
+
+<div class="col-sm-3 col-lg-3 col-md-3">
+ <img id="personimg" src="IMAGES2/Picture1.png">
+  <div id="nnp">
+  <p id="name" style="font-size:20px;font-style:bold;">Satinder Pal Jadeja</p>
+  <p id="no">+91-7421164778</p>
+  <p id="iid">ID: </p><p id="installationid">BR-VAS-SAM-001</p>
+  </div>
+</div>
+
+<div class="col-sm-3 col-lg-3 col-md-3">
+<img id="locationimg" src="IMAGES2/Picture2.png"> 
+  <div id="dist"> <p id="district" class="fontchange" >Nalanda</p><p id="co">, </p><p id="State" class="fontchange">Bihar</p></div>
+  <div id="geo" class="textchange"><p id="g">Geo: </p><p id="geo1">24.6234566</p><p id="coma">, </p><p id="geo2">84.5124567</p></div>
+</div>
+
+<div class="col-sm-2 col-lg-2 col-md-2">
+ <img id="panalimg" src="IMAGES2/Picture4.png">
+ <div id="pw"> <p id="panel" class="fontchange" style="display:inline;">400</p>&nbsp;<p id="panelunit"  class="textchange" style="display:inline;">kWh</p><br>
+	<p id="paneltype" class="textchange" >Alpex Panels</p></div>
+</div>
+
+<div class="col-sm-2 col-lg-2 col-md-2">
+<img id="energyimg" src="IMAGES2/Picture10.jpg"> 
+<div id="en"><p id="energy" class="fontchange">5412.2</p>&nbsp;<p id="energyunit" class="textchange"> kWh</p></div>
+	<p id="eg" class="textchange">Energy Generated</p>
+</div>
+
+<div class="col-sm-2 col-lg-2 col-md-2">
+<img id="co2img" src="IMAGES2/Picture8.png"> <div id="cc"><p id="co2" class="fontchange">45162</p>&nbsp;<p id="co2unit" class="textchange" > lb</p></div>
+	<p id="co22" class="textchange">CO<sub>2</sub> Avoided</p>
+</div>
+
+<div class="col-sm-3 col-lg-3 col-md-3" style="margin-top:10px;">
+<img id="dateimg" src="IMAGES2/Picture3.png" > 
+<p id="date" class="fontchange" >08-10-2017</p>
+  <p id="da" class="textchange">Date of Installation</p>
+</div>
+
+<div class="col-sm-2 col-lg-2 col-md-2" style="margin-top:10px;">
+ <img id="pumpimg" src="IMAGES2/Picture5.png"> 
+ <div id="powerpump" class="fontchange" style="left:50px;"> <p id="numofpump">3</p>&nbsp;<p id="dc">DC</p>&nbsp;<p id="surf">Surf</p></div>
+	<p id="pump" class="textchange">Shakti Pumps</p>
+</div>
+
+<div class="col-sm-2 col-lg-2 col-md-2"style="margin-top:10px;">
+<img id="waterimg" src="IMAGES2/Picture7.png"> 
+<div id="wa"> <p id="water" class="fontchange">78515</p>&nbsp;<p id="waterunit" class="textchange"> kL</p></div>
+	<p id="wd" class="textchange">Water Discharge</p>
+</div>
+
+<div class="col-sm-2 col-lg-2 col-md-2" style="margin-top:10px;">
+<img id="activepumpimg" src="IMAGES2/Picture9.png">
+<div id="ac" ><p id="activepump" class="fontchange" style="margin-left:10px;">210</p>&nbsp;<p id="days" class="textchange"> days</p></div>
+	<p id="pa" class="textchange">Pump Active</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+  </body>
+  </html>

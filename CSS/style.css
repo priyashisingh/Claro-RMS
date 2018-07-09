@@ -1,0 +1,32 @@
+.header{
+  background-color: #50A6C2;
+}
+.header .sub-menu .info{
+  margin-top: 5px;
+  margin-bottom: 2px;
+  width:auto
+}
+
+#data-table #datatables{
+  font-family: sans-serif;
+  font-size: 11px;
+}
+#data-table #datatables th{
+  border-color: black;
+}
+.paging_full_numbers .paginate_button{
+  margin-top: 5px !important;
+    background-color: #c2d6d6 !important;
+    border: 1.2px solid black !important;
+    font-family: lato !important;
+    border-radius: 4px !important;
+}
+.paging_full_numbers a.paginate_button.current{
+
+    background-color: black !important;
+
+}
+#data-table #datatables td:nth-child(2):hover{
+  cursor: pointer;
+  color:blue;
+}
